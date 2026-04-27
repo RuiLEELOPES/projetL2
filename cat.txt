@@ -1,1 +1,5 @@
+mkdir clone
+cd clone
+git clone https://github
+
 
