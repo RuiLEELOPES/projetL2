@@ -1,0 +1,60 @@
+Un petit module pour vérifier si l'ordinateur faut faire un bon choix ou non : 
+Ce que on a besoint pour tester ce module : un boutton, deux edit.
+La difficulter doit être enregistrer quand on commence le jeux. Je l'ai placer juste pour tester.
+Pour le procédure DeChoix, qui choisis si l'ordinateur va faire un bon choix ou pas.
+La base est la suivante, je l'ai mis en instant pour qu'elle marche toutseule.
+
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  j : integer ;
+  i : currency ;
+  diff : string ;
+begin
+  randomize ;
+  diff := 'hard' ;
+  if diff = 'easy' then
+  begin
+    i := random ;
+    edit2.text := CurrToStr(i) ;
+    if i < 0.2 then
+    begin
+      j := 0 ;
+    end
+    else
+    begin
+      j := 1 ;
+    end;
+
+  end
+  else if diff = 'normal' then
+  begin
+    i := random ;
+    edit2.text := CurrToStr(i) ;
+    if i < 0.5 then
+    begin
+      j := 0 ;
+    end
+    else
+    begin
+      j := 1 ;
+    end;
+
+  end
+  else if diff = 'hard' then
+  begin
+    i := random ;
+    edit2.text := CurrToStr(i) ;
+    if i < 0.9 then
+    begin
+      j := 0 ;
+    end
+    else
+    begin
+      j := 1 ;
+    end;
+
+  end;
+  edit1.text := IntToStr(j) ;
+end;   
