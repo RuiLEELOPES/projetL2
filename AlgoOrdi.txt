@@ -1,0 +1,81 @@
+En avance, voire le code DeChoix
+
+
+procedure prossesseOrdi;
+var
+i, j, t, w, x : integer ;
+score, veri : integer ;
+couleurFaible : string ;
+jouable : array[0..107] of integer ;
+begin
+  verification ; // return une liste de carte qui sont jouable avec une variable de nombre de carte "veri"
+  mémoire ; // return les mémoire qu'il a fait dans els passage précédant : appèle au point faible de joueur Humain.
+  
+
+  if veri = 0 then
+  begin
+  tirerUCarte ;
+  PassTours ;
+  end;
+
+
+  if veri > 0 then
+  begin
+    deChoix;
+    if deChoix = 0 then
+    begin
+      j := random(vari) ;
+     jouer(j)
+    end
+    else if deChoix = 1 then
+    begin
+      couleurFaible := memoireCarte ;
+      for i := 0 to veri -1 do
+      begin
+        w = deckOrdi[1 , jouable[i]] ;
+        score = 0 ;
+        if (targetColor > 0) and ((w = -3) or (w = -4) or (c = targetColor)) then
+        begin
+          score := score + 11;
+        end;
+        if w = -4 then
+        begin
+        score := score + 10 ;
+        end;
+        else if w = -2 then 
+        begin 
+          score := score + 9 ;
+        end;
+        else if w = -5 then
+        begin 
+          score := score + 8 ;
+        end;
+        else if w = -1 then 
+        begin 
+          score := score + 7 ;
+        end;
+        else if (w >= 1) and (w <= 9) then
+        begin 
+          score := score + 3 + w * 0.1 ;
+        end;
+        else if w = 0 then 
+        begin 
+          score := score + 2 ;
+        end;
+        else if w = -3 then
+        begin 
+          score := score + 1 ;
+        end;
+
+        if score > max then
+        begin
+          max := score ;
+          jouable[i] ; // pas encore un idée exacte sur ça 
+        end;
+      end;  
+    end;
+    jouer(j)
+  end;
+
+
+
