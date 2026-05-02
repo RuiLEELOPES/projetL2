@@ -1,0 +1,6 @@
+Pour qu'elle soit en plein écran : Form1.WindowState := wsFullScreen ;
+
+
+OrdiSet := TPanel.Create(ScrollBox1) ;
+ScrollBox1.Controls[ScrollBox1.ControlCount - 1].Free ;
+
