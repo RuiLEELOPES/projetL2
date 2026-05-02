@@ -77,5 +77,8 @@ begin
     jouer(j)
   end;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> aa34b66735bfc35d618b1196c59e955ff4488fde
