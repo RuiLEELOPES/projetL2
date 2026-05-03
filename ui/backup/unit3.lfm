@@ -1,15 +1,15 @@
 object Form3: TForm3
-  Left = 66
+  Left = -348
   Height = 882
-  Top = 162
+  Top = 456
   Width = 1749
   Caption = 'Form3'
-  ClientHeight = 882
-  ClientWidth = 1749
+  ClientHeight = 0
+  ClientWidth = 0
   DesignTimePPI = 120
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '3.6.0.0'
   object Button1: TButton
     Left = 8
     Height = 31

@@ -15,6 +15,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -36,6 +37,12 @@ uses Unit2 ;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.WindowState := wsFullScreen; ;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  form2.show;
+
 end;
 
 end.

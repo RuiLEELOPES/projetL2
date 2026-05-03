@@ -44,6 +44,9 @@ type
 
   public
     pn : integer ;
+    difficulter : integer ;
+    temps : integer ;
+    tempsUno : integer ;
   end;
 
 var
@@ -58,7 +61,7 @@ uses Unit2, Unit1 ;
 { TForm3 }
 var
   UNO : TBitmap ;
-  nCarte, DeckN1, DeckN2, DeckP : integer ;
+  nCarte, DeckN1, DeckN2, DeckN3, DeckN4, DeckP : integer ;
   CarteW, CarteH : integer ;
 
 
@@ -67,6 +70,8 @@ begin
   Form3.WindowState := wsFullScreen;
   DeckN1 := 0;
   DeckN2 := 0;
+  DeckN3 := 0;
+  DeckN4 := 0;
   DeckP := 0;
   randomize;
   Panel2.Hide;
@@ -84,6 +89,12 @@ begin
   begin
     Panel2.Show;
     Panel3.Show;
+  end
+  else if pn = 4 then
+  begin
+    Panel2.Show;
+    Panel3.Show;
+    Panel4.Show;
   end;
 end;
 
@@ -97,7 +108,7 @@ var
 begin
 
   UNO := TBitmap.Create ;
-  UNO.LoadFromFile('C:\Users\User\Documents\clone\projetL2\ui\Uno_cards_v3.bmp');
+  UNO.LoadFromFile('Uno_cards_v3.bmp');
   CarteW := UNO.Width div 13 ;
   CarteH := UNO.Height div 5 ;
 
@@ -152,7 +163,41 @@ begin
   PaintBox5.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
   DeckN2 := DeckN2 + 1;
   end;
+  if pn >= 2 then
+  begin
+  scale := 50;
+  CarteInfoC := random(4) ;
+  CarteInfoN := random(12) ;
+  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
+  begin
+    CarteInfoC := random(4) ;
+    CarteInfoN := random(12) ;
   end;
+  c := CarteInfoC ;
+  n := CarteInfoN ;
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  DestRect := Rect(DeckN3 * 55, 1, DeckN3 * 55 + round(scale*1), 1 + round(scale*1.55));
+  PaintBox7.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  DeckN3 := DeckN3 + 1;
+  end;
+  if pn >= 3 then
+  begin
+  scale := 50;
+  CarteInfoC := random(4) ;
+  CarteInfoN := random(12) ;
+  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
+  begin
+    CarteInfoC := random(4) ;
+    CarteInfoN := random(12) ;
+  end;
+  c := CarteInfoC ;
+  n := CarteInfoN ;
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  DestRect := Rect(DeckN4 * 55, 1, DeckN4 * 55 + round(scale*1), 1 + round(scale*1.55));
+  PaintBox9.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  DeckN4 := DeckN4 + 1;
+  end;
+
 
 end;
 

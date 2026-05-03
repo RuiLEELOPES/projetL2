@@ -61,8 +61,8 @@ uses Unit1, Unit3 ;
 procedure TForm2.Button1Click(Sender: TObject);
 
 begin
-  p := p + 1 ;
 
+  p := p + 1 ;
   if p = 4 then
   begin
     Button1.enabled := False ;
@@ -100,7 +100,7 @@ end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
-  if p > 0 then
+  if p > 1 then
   begin
     ScrollBox1.Controls[ScrollBox1.ControlCount - 1].Free ;
     p := p - 1 ;
@@ -115,7 +115,7 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 var
-  i, j, l, n : integer ;
+  i, j, l, n, dif, t, tu : integer ;
   App : boolean ;
   Ctrl : TControl ;
   SubCtrl : TControl ;
@@ -162,9 +162,59 @@ begin
       n := n + 1 ;
     end;
 
+    if (Combobox2.text = 'Fascille') then
+    begin
+      dif := 1 ;
+    end
+    else if Combobox2.text = 'Normal' then
+    begin
+      dif := 2 ;
+    end
+    else if Combobox2.text = 'Difficile' then
+    begin
+      dif := 3 ;
+    end ;
+
+    if (Combobox3.text = '15s') then
+    begin
+      t := 15 ;
+    end
+    else if Combobox3.text = '30s' then
+    begin
+      t := 30 ;
+    end
+    else if Combobox3.text = '60s' then
+    begin
+      t := 60 ;
+    end
+    else if Combobox3.text = '120s' then
+    begin
+      t := 120 ;
+    end;
+
+    if Combobox4.text = '3s' then
+    begin
+      tu := 3 ;
+    end
+    else if Combobox4.text = '5s' then
+    begin
+      tu := 5 ;
+    end
+    else if Combobox4.text = '10s' then
+    begin
+      tu := 10 ;
+    end
+    else if Combobox4.text = '15s' then
+    begin
+      tu := 15 ;
+    end ;
+
     Form2.hide ;
     Form1.hide ;
     Form3.pn := n ;
+    Form3.difficulter := dif ;
+    Form3.temps := t ;
+    Form3.tempsUno := tu ;
   end;
 
 
@@ -198,7 +248,6 @@ begin
     OrdiType.Items.Add('Passif') ;
     OrdiType.Items.Add('Agressif') ;
     OrdiType.Items.Add('Stratégique') ;
-
 
     Combobox2.Items.Add('Fascile') ;
     Combobox2.Items.Add('Normal') ;

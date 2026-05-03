@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 387
+  Left = 157
   Height = 691
-  Top = 194
+  Top = 246
   Width = 1359
   Align = alBottom
   Caption = 'Form1'
@@ -17,6 +17,7 @@ object Form1: TForm1
     Width = 94
     Caption = 'JOUER'
     TabOrder = 0
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 888
