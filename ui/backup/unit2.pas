@@ -145,7 +145,7 @@ begin
   end
   else
   begin
-    //Form3.show ;
+    Form3.show ;
   end;
 
 

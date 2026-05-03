@@ -146,6 +146,8 @@ begin
   else
   begin
     Form3.show ;
+    Form2.hide ;
+    Form1.hide ;
   end;
 
 
