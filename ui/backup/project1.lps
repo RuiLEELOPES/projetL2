@@ -51,8 +51,8 @@
         <UnitName Value="Unit3"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="139"/>
-        <CursorPos Y="156"/>
+        <TopLine Value="130"/>
+        <CursorPos X="18" Y="163"/>
         <ComponentState Value="1"/>
         <UsageCount Value="30"/>
         <Loaded Value="True"/>
