@@ -107,9 +107,14 @@ begin
   end;
 end;
 
+function CarteImage();
+var
+   CRect, VRect : TRect ;
+
+
 procedure TForm3.Button1Click(Sender: TObject);
 var
-  SrcRect, DestRect : TRect ;
+  CRect, VRect : TRect ;
   scale : LongInt;
   CarteInfoC : integer ;
   CarteInfoN : integer ;
@@ -134,8 +139,8 @@ begin
   c := CarteInfoC ;
   n := CarteInfoN ;
 
-  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  DestRect := Rect(DeckN1 * 55, 1, DeckN1 * 55 + round(scale*1), 1 + round(scale*1.55));
+  CRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  VRect := Rect(DeckN1 * 55, 1, DeckN1 * 55 + round(scale*1), 1 + round(scale*1.55));
   PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
   DeckN1 := DeckN1 + 1;
 
