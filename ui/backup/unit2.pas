@@ -20,16 +20,13 @@ type
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
     CheckGroup1: TCheckGroup;
-    ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     ComboBox3: TComboBox;
     ComboBox4: TComboBox;
-    Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -49,6 +46,9 @@ type
 var
   Form2: TForm2;
   p : integer ;
+  OrdiSet : TPanel ;
+  OrdiLabel : TLabel ;
+  OrdiType : TComboBox ;
 
 implementation
 
@@ -59,18 +59,17 @@ uses Unit1, Unit3 ;
 { TForm2 }
 
 procedure TForm2.Button1Click(Sender: TObject);
-var
-  OrdiSet : TPanel ;
-  OrdiLabel : TLabel ;
-  OrdiType : TComboBox ;
+
 begin
   p := p + 1 ;
-  if p > 4 then
+
+  if p = 4 then
   begin
-    showmessage('impossible d"ajouter un joueur : le max de joueur atteint !')
+    Button1.enabled := False ;
   end
   else
   begin
+    Button2.enabled := True ;
     OrdiSet := TPanel.Create(ScrollBox1) ;
     OrdiSet.Parent := ScrollBox1 ;
     OrdiSet.Height := 48 ;
@@ -97,14 +96,6 @@ begin
 
   end;
 
-
-
-
-
-
-
-
-
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -113,6 +104,12 @@ begin
   begin
     ScrollBox1.Controls[ScrollBox1.ControlCount - 1].Free ;
     p := p - 1 ;
+    Button1.enabled := True ;
+    if p = 1 then
+    begin
+      Button2.enabled := False ;
+      p := 0
+    end;
   end;
 end;
 
@@ -132,7 +129,7 @@ begin
   for i := 0 to p do
   begin
     Ctrl := ScrollBox1.Controls[i];
-        if (TComboBox(TPanel(Ctrl).Controls[i]).ItemIndex = -1) then
+        if (TComboBox(1 + TPanel(Ctrl).Controls[i]).ItemIndex = -1) then
       begin
         App := False ;
         Break;
@@ -147,7 +144,7 @@ begin
   begin
     Form3.show ;
     n :=  0 ;
-    for j := to ScrollBox1.ControlCount - 1 do
+    for j := 0 to ScrollBox1.ControlCount - 1 do
     begin
       n := n + 1 ;
     end;
@@ -165,10 +162,30 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   p := 0;
+    OrdiSet := TPanel.Create(ScrollBox1) ;
+    OrdiSet.Parent := ScrollBox1 ;
+    OrdiSet.Height := 48 ;
+    OrdiSet.width := 376 ;
+    Ordiset.Top := 8 + p*72 ;
+    Ordiset.Left := 8 ;
 
-    Combobox1.Items.Add('Passif') ;
-    Combobox1.Items.Add('Agressif') ;
-    Combobox1.Items.Add('Stratégique') ;
+    OrdiLabel := TLabel.Create(OrdiSet) ;
+    OrdiLabel.Parent := OrdiSet ;
+    OrdiLabel.Left := 16 ;
+    OrdiLabel.Top := 8 ;
+    OrdiLabel.Caption := 'Joueur ' + IntToStr(p + 1);
+
+    OrdiType := TComboBox.Create(OrdiSet) ;
+    OrdiType.Parent := OrdiSet ;
+    OrdiType.Height := 28 ;
+    OrdiType.width := 144 ;
+    OrdiType.Left := 176 ;
+    OrdiType.Top := 8 ;
+    OrdiType.TextHint := 'choisir une mode' ;
+    OrdiType.Items.Add('Passif') ;
+    OrdiType.Items.Add('Agressif') ;
+    OrdiType.Items.Add('Stratégique') ;
+
 
     Combobox2.Items.Add('Fascile') ;
     Combobox2.Items.Add('Normal') ;

@@ -4,46 +4,19 @@ object Form2: TForm2
   Top = 41
   Width = 592
   Caption = 'Form2'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 880
+  ClientWidth = 592
   DesignTimePPI = 120
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
-  LCLVersion = '3.6.0.0'
   object ScrollBox1: TScrollBox
     Left = 88
     Height = 264
     Top = 8
     Width = 424
-    HorzScrollBar.Page = 384
-    VertScrollBar.Page = 56
-    ClientHeight = 260
-    ClientWidth = 420
+    HorzScrollBar.Page = 1
+    VertScrollBar.Page = 1
     TabOrder = 0
-    object Panel1: TPanel
-      Left = 8
-      Height = 48
-      Top = 8
-      Width = 376
-      ClientHeight = 48
-      ClientWidth = 376
-      TabOrder = 0
-      object ComboBox1: TComboBox
-        Left = 176
-        Height = 28
-        Top = 8
-        Width = 144
-        ItemHeight = 20
-        TabOrder = 0
-        TextHint = 'choisir une mode'
-      end
-      object Label1: TLabel
-        Left = 16
-        Height = 20
-        Top = 8
-        Width = 151
-        Caption = 'Joueur 1 (Ordinateur) : '
-      end
-    end
   end
   object Button1: TButton
     Left = 88
@@ -83,9 +56,9 @@ object Form2: TForm2
       TabOrder = 0
       object Label2: TLabel
         Left = 8
-        Height = 20
+        Height = 15
         Top = 8
-        Width = 72
+        Width = 70
         Caption = 'Difficulté : '
       end
       object ComboBox2: TComboBox
@@ -108,9 +81,9 @@ object Form2: TForm2
       TabOrder = 1
       object Label3: TLabel
         Left = 8
-        Height = 20
+        Height = 15
         Top = 8
-        Width = 123
+        Width = 126
         Caption = 'Le temp de tours : '
       end
       object ComboBox3: TComboBox
@@ -133,9 +106,9 @@ object Form2: TForm2
       TabOrder = 2
       object Label4: TLabel
         Left = 8
-        Height = 20
+        Height = 15
         Top = 8
-        Width = 158
+        Width = 161
         Caption = 'Quick time event UNO : '
       end
       object ComboBox4: TComboBox
@@ -161,9 +134,9 @@ object Form2: TForm2
     TabOrder = 4
     object Label5: TLabel
       Left = 16
-      Height = 20
+      Height = 15
       Top = 16
-      Width = 94
+      Width = 97
       Caption = 'Règle du jeu : '
     end
     object CheckGroup1: TCheckGroup
@@ -180,12 +153,12 @@ object Form2: TForm2
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 106
+      ClientHeight = 111
       ClientWidth = 227
       TabOrder = 0
       object CheckBox1: TCheckBox
         Left = 6
-        Height = 23
+        Height = 25
         Top = 6
         Width = 215
         Caption = 'Double Play'
@@ -193,24 +166,24 @@ object Form2: TForm2
       end
       object CheckBox2: TCheckBox
         Left = 6
-        Height = 23
-        Top = 29
+        Height = 24
+        Top = 31
         Width = 215
         Caption = 'Carte Spécialisé'
         TabOrder = 1
       end
       object CheckBox3: TCheckBox
         Left = 6
-        Height = 24
-        Top = 52
+        Height = 25
+        Top = 55
         Width = 215
         Caption = 'Obligation de Poser'
         TabOrder = 2
       end
       object CheckBox4: TCheckBox
         Left = 6
-        Height = 24
-        Top = 76
+        Height = 25
+        Top = 80
         Width = 215
         Caption = 'Victoire 1e 2e 3e'
         TabOrder = 3

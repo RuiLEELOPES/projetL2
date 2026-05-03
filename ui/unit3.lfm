@@ -7,9 +7,9 @@ object Form3: TForm3
   ClientHeight = 882
   ClientWidth = 1749
   DesignTimePPI = 120
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '3.6.0.0'
   object Button1: TButton
     Left = 8
     Height = 31

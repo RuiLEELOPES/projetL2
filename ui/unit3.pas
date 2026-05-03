@@ -97,7 +97,7 @@ var
 begin
 
   UNO := TBitmap.Create ;
-  UNO.LoadFromFile('C:\Users\User\Documents\clone\projetL2\ui\Uno_cards_v3.bmp');
+  UNO.LoadFromFile('Uno_cards_v3.bmp');
   CarteW := UNO.Width div 13 ;
   CarteH := UNO.Height div 5 ;
 
