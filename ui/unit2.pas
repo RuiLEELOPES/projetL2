@@ -15,6 +15,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
@@ -36,6 +37,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -209,6 +211,19 @@ begin
       tu := 15 ;
     end ;
 
+    if CheckBox1.Checked = True then
+    begin
+      Form3.DoubleP := True ;
+    end;
+    if CheckBox2.Checked = True then
+    begin
+      Form3.CarteS := True ;
+    end;
+    if CheckBox3.Checked = True then
+    begin
+      Form3.ObligationP := True ;
+    end;
+
     Form2.hide ;
     Form1.hide ;
     Form3.pn := n ;
@@ -218,6 +233,12 @@ begin
   end;
 
 
+end;
+
+procedure TForm2.Button4Click(Sender: TObject);
+begin
+  Form2.hide ;
+  Application.CreateForm(TForm2, Form2);
 end;
 
 

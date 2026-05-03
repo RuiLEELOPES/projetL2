@@ -16,6 +16,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -34,6 +35,8 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure placerUneCarte ;
@@ -47,6 +50,7 @@ type
     difficulter : integer ;
     temps : integer ;
     tempsUno : integer ;
+    DoubleP, CarteS, ObligationP : Boolean ;
   end;
 
 var
@@ -95,6 +99,11 @@ begin
     Panel2.Show;
     Panel3.Show;
     Panel4.Show;
+  end;
+
+  if ObligationP = True then
+  begin
+    Button3.enabled := False ;
   end;
 end;
 
@@ -200,7 +209,17 @@ begin
 
 
 end;
+end;
 
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
 
 procedure TForm3.placerUneCarte ;
 var

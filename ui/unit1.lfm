@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 480
-  Height = 691
-  Top = 210
+  Left = 353
+  Height = 842
+  Top = 139
   Width = 1359
   Align = alBottom
   Caption = 'Form1'
-  ClientHeight = 691
+  ClientHeight = 842
   ClientWidth = 1359
   DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
@@ -55,5 +55,21 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 888
+    Height = 68
+    Top = 688
+    Width = 230
+    Caption = 'QUITTER'
+    Font.CharSet = HANGEUL_CHARSET
+    Font.Height = -33
+    Font.Name = 'Noto Sans KR'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    OnClick = Button4Click
   end
 end

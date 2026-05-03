@@ -1,38 +1,59 @@
 object Form1: TForm1
-  Left = 157
+  Left = 480
   Height = 691
-  Top = 246
+  Top = 210
   Width = 1359
   Align = alBottom
   Caption = 'Form1'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 691
+  ClientWidth = 1359
   DesignTimePPI = 120
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
-  LCLVersion = '3.6.0.0'
   object Button1: TButton
     Left = 888
-    Height = 31
-    Top = 432
-    Width = 94
+    Height = 68
+    Top = 376
+    Width = 230
     Caption = 'JOUER'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -33
+    Font.Name = 'Noto Sans KR'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 0
     OnClick = Button1Click
   end
   object Button2: TButton
     Left = 888
-    Height = 31
-    Top = 480
-    Width = 94
+    Height = 68
+    Top = 481
+    Width = 230
     Caption = 'AIDE'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -33
+    Font.Name = 'Noto Sans KR'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
   end
   object Button3: TButton
     Left = 888
-    Height = 31
-    Top = 528
-    Width = 94
+    Height = 68
+    Top = 587
+    Width = 230
     Caption = 'PARAMETRE'
+    Font.CharSet = HANGEUL_CHARSET
+    Font.Height = -33
+    Font.Name = 'Noto Sans KR'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
   end
 end

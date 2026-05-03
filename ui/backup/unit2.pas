@@ -63,7 +63,7 @@ procedure TForm2.Button1Click(Sender: TObject);
 begin
 
   p := p + 1 ;
-  if p = 3 then
+  if p = 4 then
   begin
     Button1.enabled := False ;
   end
@@ -208,6 +208,19 @@ begin
     begin
       tu := 15 ;
     end ;
+
+    if CheckBox1.Checked = True then
+    begin
+      Form3.DoubleP := True ;
+    end;
+    if CheckBox2.Checked = True then
+    begin
+      Form3.CarteS := True ;
+    end;
+    if CheckBox3.Checked = True then
+    begin
+      Form3.ObligationP := True ;
+    end;
 
     Form2.hide ;
     Form1.hide ;
