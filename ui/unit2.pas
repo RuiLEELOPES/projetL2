@@ -115,9 +115,10 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 var
-  i, j, n : integer ;
+  i, j, l, n : integer ;
   App : boolean ;
   Ctrl : TControl ;
+  SubCtrl : TControl ;
 begin
   App := True ;
 
@@ -129,11 +130,23 @@ begin
   for i := 0 to p do
   begin
     Ctrl := ScrollBox1.Controls[i];
-        if (TComboBox(TPanel(Ctrl).Controls[i + 1]).ItemIndex = -1) then
+    if Ctrl is TPanel then
+    begin
+      for l := 0 to TPanel(Ctrl).ControlCount - 1 do
       begin
-        App := False ;
-        Break;
+        SubCtrl := TPanel(Ctrl).Controls[l];
+        if SubCtrl is TComboBox then
+        begin
+          if (TComboBox(SubCtrl).ItemIndex = -1) then
+          begin
+             App := False ;
+             Break;
+          end;
+        end;
       end;
+    end;
+
+
     end;
 
   if App = False then
