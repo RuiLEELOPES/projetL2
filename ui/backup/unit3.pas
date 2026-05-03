@@ -35,6 +35,7 @@ type
     Panel4: TPanel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure placerUneCarte ;
 
 
 
@@ -56,45 +57,87 @@ uses Unit2, Unit1 ;
 { TForm3 }
 var
   UNO : TBitmap ;
-  nCarte : integer ;
+  nCarte, DeckN1, DeckP : integer ;
+  CarteW, CarteH : integer ;
 
 
 procedure TForm3.FormCreate(Sender: TObject);
 begin
   Form3.WindowState := wsFullScreen;
-  nCarte := 0 ;
+  DeckN1 := 0;
+  DeckP := 0;
+  randomize;
 end;
 
 procedure TForm3.Button1Click(Sender: TObject);
 var
-  CarteW, CarteH : integer ;
   SrcRect, DestRect : TRect ;
   scale : LongInt;
   CarteInfoC : integer ;
   CarteInfoN : integer ;
+  c, n, i : integer ;
 begin
-  scale := 50;
+
   UNO := TBitmap.Create ;
   UNO.LoadFromFile('C:\Users\User\Documents\clone\projetL2\ui\Uno_cards_v3.bmp');
   CarteW := UNO.Width div 13 ;
   CarteH := UNO.Height div 5 ;
 
+  for i := 0 to i 6 do
+  begin
+    scale := 50;
+  CarteInfoC := random(4) ;
+  CarteInfoN := random(12) ;
+  if (CarteInfoC = 12) and (CarteInfoN = 0) then
+  begin
+    CarteInfoC := random(4) ;
+    CarteInfoN := random(12) ;
+  end;
+  c := CarteInfoC ;
+  n := CarteInfoN ;
 
-  CarteInfoC := 3 ;
-  CarteInfoN := 5 ;
-  SrcRect := Rect(CarteInfoN * CarteW, CarteInfoC * CarteH, (CarteInfoN + 1) * CarteW, (CarteInfoC + 1) * CarteH);
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  DestRect := Rect(DeckN1 * 55, 1, DeckN1 * 55 + round(scale*1), 1 + round(scale*1.55));
+  PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  DeckN1 := DeckN1 + 1;
+
+  CarteInfoC := random(4) ;
+  CarteInfoN := random(12) ;
+  if (CarteInfoC = 12) and (CarteInfoN = 0) then
+  begin
+    CarteInfoC := random(4) ;
+    CarteInfoN := random(12) ;
+  end;
+  c := CarteInfoC ;
+  n := CarteInfoN ;
+  scale := 100 ;
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  DestRect := Rect(DeckP * 110, 1, DeckP * 110 + round(scale*1), 1 + round(scale*1.55));
+  PaintBox1.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  DeckP := DeckP + 1;
+  end;
+
+
+end;
+
+procedure TForm3.placerUneCarte ;
+var
+  SrcRect, DestRect : TRect ;
+  scale : LongInt;
+  CarteInfoC : integer ;
+  CarteInfoN : integer ;
+  c, n : integer ;
+begin
+  scale := 50;
+  CarteInfoC := 0 ;
+  CarteInfoN := 0 ;
+  c := CarteInfoC ;
+  n := CarteInfoN ;
+
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
   DestRect := Rect(nCarte * 64, 1, 1 + round(scale*1), 1 + round(scale*1.55));
   PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  nCarte := 1 ;
-
-  SrcRect := Rect(2 * CarteW, 2 * CarteH, (2 + 1) * CarteW, (2 + 1) * CarteH);
-  DestRect := Rect(nCarte * 64, 1, 64 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  nCarte := 2 ;
-
-  SrcRect := Rect(3 * CarteW, 3 * CarteH, (3 + 1) * CarteW, (3 + 1) * CarteH);
-  DestRect := Rect(nCarte * 64, 1, 128 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  nCarte := nCarte + 1 ;
 
 end;
 
