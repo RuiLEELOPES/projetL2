@@ -118,7 +118,7 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 var
-  i : integer ;
+  i, j, n : integer ;
   App : boolean ;
   Ctrl : TControl ;
 begin
@@ -146,8 +146,15 @@ begin
   else
   begin
     Form3.show ;
+    n :=  0 ;
+    for j := to ScrollBox1.ControlCount - 1 do
+    begin
+      n := n + 1 ;
+    end;
+
     Form2.hide ;
     Form1.hide ;
+    Form3.pn := n ;
   end;
 
 

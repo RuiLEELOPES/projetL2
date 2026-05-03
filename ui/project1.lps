@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="6"/>
         <CursorPos Y="19"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -23,7 +23,7 @@
         <TopLine Value="17"/>
         <CursorPos X="32" Y="40"/>
         <ComponentState Value="1"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -35,10 +35,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="151"/>
-        <CursorPos X="19" Y="163"/>
+        <TopLine Value="130"/>
+        <CursorPos X="18" Y="72"/>
         <ComponentState Value="1"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -51,9 +51,10 @@
         <UnitName Value="Unit3"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="79"/>
-        <CursorPos X="25" Y="97"/>
-        <UsageCount Value="28"/>
+        <TopLine Value="130"/>
+        <CursorPos X="18" Y="163"/>
+        <ComponentState Value="1"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -63,15 +64,15 @@
         <EditorIndex Value="5"/>
         <TopLine Value="427"/>
         <CursorPos X="3" Y="449"/>
-        <UsageCount Value="15"/>
+        <UsageCount Value="16"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="4"/>
         <TopLine Value="6482"/>
-        <CursorPos X="17" Y="6491"/>
-        <UsageCount Value="14"/>
+        <CursorPos X="15" Y="6498"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -79,35 +80,11 @@
         <EditorIndex Value="3"/>
         <TopLine Value="126"/>
         <CursorPos Y="141"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="54" Column="3" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="53" Column="3" TopLine="25"/>
-      </Position>
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="40" Column="6" TopLine="30"/>
-      </Position>
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="16" Column="15"/>
-      </Position>
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="53" Column="5" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="unit3.pas"/>
-        <Caret Line="60" Column="5" TopLine="28"/>
-      </Position>
       <Position>
         <Filename Value="unit3.pas"/>
         <Caret Line="42" Column="3" TopLine="27"/>
@@ -203,6 +180,30 @@
       <Position>
         <Filename Value="unit3.pas"/>
         <Caret Line="86" Column="20" TopLine="82"/>
+      </Position>
+      <Position>
+        <Filename Value="unit2.pas"/>
+        <Caret Line="157" Column="20" TopLine="134"/>
+      </Position>
+      <Position>
+        <Filename Value="unit2.pas"/>
+        <Caret Line="150" Column="27" TopLine="134"/>
+      </Position>
+      <Position>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="46" Column="19" TopLine="46"/>
+      </Position>
+      <Position>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="75" Column="12" TopLine="59"/>
+      </Position>
+      <Position>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="151" Column="12" TopLine="128"/>
+      </Position>
+      <Position>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="137" Column="10" TopLine="128"/>
       </Position>
     </JumpHistory>
     <RunParams>

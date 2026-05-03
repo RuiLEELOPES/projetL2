@@ -35,6 +35,7 @@ type
     Panel4: TPanel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure placerUneCarte ;
 
 
@@ -42,7 +43,7 @@ type
   private
 
   public
-
+    pn : integer ;
   end;
 
 var
@@ -57,7 +58,7 @@ uses Unit2, Unit1 ;
 { TForm3 }
 var
   UNO : TBitmap ;
-  nCarte, DeckN1, DeckP : integer ;
+  nCarte, DeckN1, DeckN2, DeckP : integer ;
   CarteW, CarteH : integer ;
 
 
@@ -65,8 +66,25 @@ procedure TForm3.FormCreate(Sender: TObject);
 begin
   Form3.WindowState := wsFullScreen;
   DeckN1 := 0;
+  DeckN2 := 0;
   DeckP := 0;
   randomize;
+  Panel2.Hide;
+  Panel3.Hide;
+  Panel4.Hide;
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+begin
+  if pn = 2 then
+  begin
+    Panel2.Show;
+  end
+  else if pn = 3 then
+  begin
+    Panel2.Show;
+    Panel3.Show;
+  end;
 end;
 
 procedure TForm3.Button1Click(Sender: TObject);
@@ -83,12 +101,12 @@ begin
   CarteW := UNO.Width div 13 ;
   CarteH := UNO.Height div 5 ;
 
-  for i := 0 to i 6 do
+  for i := 0 to 6 do
   begin
     scale := 50;
   CarteInfoC := random(4) ;
   CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) then
+  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
   begin
     CarteInfoC := random(4) ;
     CarteInfoN := random(12) ;
@@ -103,7 +121,7 @@ begin
 
   CarteInfoC := random(4) ;
   CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) then
+  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
   begin
     CarteInfoC := random(4) ;
     CarteInfoN := random(12) ;
@@ -115,10 +133,29 @@ begin
   DestRect := Rect(DeckP * 110, 1, DeckP * 110 + round(scale*1), 1 + round(scale*1.55));
   PaintBox1.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
   DeckP := DeckP + 1;
+
+
+  if pn >= 1 then
+  begin
+  scale := 50;
+  CarteInfoC := random(4) ;
+  CarteInfoN := random(12) ;
+  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
+  begin
+    CarteInfoC := random(4) ;
+    CarteInfoN := random(12) ;
   end;
-
-
+  c := CarteInfoC ;
+  n := CarteInfoN ;
+  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
+  DestRect := Rect(DeckN2 * 55, 1, DeckN2 * 55 + round(scale*1), 1 + round(scale*1.55));
+  PaintBox5.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
+  DeckN2 := DeckN2 + 1;
+  end;
+  end;
+  end;
 end;
+
 
 procedure TForm3.placerUneCarte ;
 var
