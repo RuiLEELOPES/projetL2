@@ -1,9 +1,10 @@
- {
-  Auteur      : BENBEKHTI MELIANI
-  CompteGit : DarvogGit
-  Date        : 04/05/2026
-  Description : Unit créée pour gérer les differentes action possible dans une partie de UNO
+{
+ Auteur      : BENBEKHTI MELIANI Nadir
+ CompteGit : DarvogGit
+ Date        : 04/05/2026
+ Description : Unit créée pour gérer les differentes action possible dans une partie de UNO
 }
+
 unit Methode_UNO;
 
 {$mode ObjFPC}{$H+}
@@ -42,18 +43,22 @@ function GenererDeckUno(var Deck: TDeck): Boolean;
 procedure AfficherCarte(Carte: TCarte);
 procedure AfficherMain(Main: TMain);
 procedure AfficherDeck(Deck: TDeck);
-function CarteEstJouable(Carte: TCarte; CarteVerif: TCarte): Boolean;
 function PiocherCarte(var Deck: TDeck; var CarteSortie: TCarte): Boolean;
-function JouerCarteMain(var Main: TMain; var CarteSortie: TCarte): Boolean;
-procedure AjouterCarteFinMain(var Main: TMain; Carte: TCarte);
- function Jouerlabonnecarte(var Main: TMain; var CarteSortie: TCarte; var CarteVerif: TCarte): Boolean;
- procedure EchangerMains(var Main1: TMain; var Main2: TMain);
- function JouerCarteAvecChoix(var MainJoueur: TMain;var CarteVerif: TCarte;Choix: Integer;var CarteSortie: TCarte): Boolean;
- function CarteEstJouableAvecCouleurForcee(Carte: TCarte;CarteVerif: TCarte;DerniereCouleurForcee: TCouleur): Boolean;
- function JouerCartePrioriteNegative(var Main: TMain;var CarteSortie: TCarte;var CarteVerif: TCarte;DerniereCouleurForcee: TCouleur): Boolean;
+ function JouerCarteMain(var Main: TMain; var CarteSortie: TCarte): Boolean;
+ procedure AjouterCarteFinMain(var Main: TMain; Carte: TCarte);
 implementation
-
- {==============================METHODE==============================}
+function Jouerlabonnecarte(var Main: TMain; var CarteSortie: TCarte; var CarteVerif: TCarte): Boolean;
+procedure EchangerMains(var Main1: TMain; var Main2: TMain);
+procedure DetruireMain(var Main: TMain);
+procedure DetruireDeck(var Deck: TDeck);
+function CreerMainChoixJouables(var MainJoueur: TMain;var MainChoix: TMain;var CarteVerif: TCarte): Boolean;
+function RecupererCarteParNumero(var Main: TMain;numero: Integer; var CarteSortie: TCarte): Boolean;
+function EnleverCarteDeMain(var Main: TMain;CarteAEnlever: TCarte;var CarteSortie: TCarte): Boolean;
+function MelangerDeck(var Deck: TDeck): Boolean;
+function JouerCarteAvecChoix(var MainJoueur: TMain;var CarteVerif: TCarte;Choix: Integer;var CarteSortie: TCarte): Boolean;
+function CarteEstJouableAvecCouleurForcee(Carte: TCarte;CarteVerif: TCarte;DerniereCouleurForcee: TCouleur): Boolean;
+function JouerCartePrioriteNegative(var Main: TMain;var CarteSortie: TCarte;var CarteVerif: TCarte;DerniereCouleurForcee: TCouleur): Boolean;
+ {==============================FONCTION==============================}
 
 //INIT
 procedure InitialiserDeck(var Deck: TDeck);   //init deck
@@ -140,66 +145,8 @@ begin
   GenererDeckUno := Deck.Taille = 104;
 end;
 
-//MELANGER DECK
-function MelangerDeckSansArray(var Deck: TDeck): Boolean;
-var
-  AncienSommet: PElementCarte;
-  CarteAInserer: PElementCarte;
-  NouveauDeck: TDeck;
-  Position, i: Integer;
-  Temp: PElementCarte;
-begin
-  // Si le deck est vide ou contient une seule carte
-  if (Deck.Sommet = nil) or (Deck.Taille <= 1) then
-  begin
-    MelangerDeckSansArray := False;
-    Exit;
-  end;
+function CarteEstJouable(Carte: TCarte; CarteVerif: TCarte): Boolean;
 
-  // Nouveau deck vide
-  NouveauDeck.Sommet := nil;
-  NouveauDeck.Taille := 0;
-
-  // Tant qu'il reste des cartes dans l'ancien deck
-  while Deck.Sommet <> nil do
-  begin
-    // On enlève la carte du sommet de l'ancien deck
-    CarteAInserer := Deck.Sommet;
-    Deck.Sommet := Deck.Sommet^.Suivant;
-    Deck.Taille := Deck.Taille - 1;
-
-    // On choisit une position aléatoire dans le nouveau deck
-    // Position entre 0 et NouveauDeck.Taille
-    Position := Random(NouveauDeck.Taille + 1);
-
-    // Insertion au début
-    if Position = 0 then
-    begin
-      CarteAInserer^.Suivant := NouveauDeck.Sommet;
-      NouveauDeck.Sommet := CarteAInserer;
-    end
-    else
-    begin
-      // Insertion après Position éléments
-      Temp := NouveauDeck.Sommet;
-
-      for i := 1 to Position - 1 do
-      begin
-        Temp := Temp^.Suivant;
-      end;
-
-      CarteAInserer^.Suivant := Temp^.Suivant;
-      Temp^.Suivant := CarteAInserer;
-    end;
-
-    NouveauDeck.Taille := NouveauDeck.Taille + 1;
-  end;
-
-  // Le nouveau deck mélangé devient le deck principal
-  Deck := NouveauDeck;
-
-  MelangerDeckSansArray := True;
-end;
 //AFFICHER
 
 procedure AfficherCarte(Carte: TCarte);
@@ -436,6 +383,19 @@ begin
 end;
 //FAIRE JOUER LE JOUEUR  {Trouver un meilleur nom}
 
+procedure DetruireDeck(var Deck: TDeck); //pour liberez de la mémoire lors du mélange du deck
+var
+  Temp: PElementCarte;
+begin
+  while Deck.Sommet <> nil do
+  begin
+    Temp := Deck.Sommet;
+    Deck.Sommet := Deck.Sommet^.Suivant;
+    Dispose(Temp);
+  end;
+
+  Deck.Taille := 0;
+end;
 function CreerMainChoixJouables(var MainJoueur: TMain;var MainChoix: TMain;var CarteVerif: TCarte): Boolean;
 var
   Temp: PElementCarte;
@@ -521,6 +481,53 @@ begin
   EnleverCarteDeMain := False;
 end;
 
+ function MelangerDeck(var Deck: TDeck): Boolean; //melange le deck
+var
+  Cartes: array of TCarte;
+  Temp: PElementCarte;
+  i, j: Integer;
+  CarteTemp: TCarte;
+begin
+  if Deck.Taille <= 1 then
+  begin
+    MelangerDeck := True;
+    Exit;
+  end;
+
+  // 1. Copier les cartes du deck dans un tableau
+  SetLength(Cartes, Deck.Taille);
+
+  Temp := Deck.Sommet;
+  i := 0;
+
+  while Temp <> nil do
+  begin
+    Cartes[i] := Temp^.Carte;
+    Temp := Temp^.Suivant;
+    i := i + 1;
+  end;
+
+  // 2. Mélange Fisher-Yates
+  for i := High(Cartes) downto 1 do
+  begin
+    j := Random(i + 1);
+
+    CarteTemp := Cartes[i];
+    Cartes[i] := Cartes[j];
+    Cartes[j] := CarteTemp;
+  end;
+
+  // 3. Détruire l'ancien deck
+  DetruireDeck(Deck);
+
+  // 4. Reconstruire le deck mélangé
+  for i := 0 to High(Cartes) do
+  begin
+    AjouterCarteDeck(Deck, Cartes[i]);
+  end;
+
+  MelangerDeck := True;
+end;
 
 function JouerCarteAvecChoix(var MainJoueur: TMain;var CarteVerif: TCarte;Choix: Integer;var CarteSortie: TCarte): Boolean;
 //on simule maintenant toute les action nécessaire pour fair joué
