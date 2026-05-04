@@ -1,6 +1,6 @@
 {
- Auteur      : LEE LOPES Rui
- CompteGit : RuiLEELOPES
+ Auteur      : LEE LOPES Rui, BENBEKHTI MELIANI Nadir
+ CompteGit : RuiLEELOPES, DarvogGit
  Date        : 04/05/2026
  Description :
 }
@@ -27,7 +27,6 @@ Type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Memo1: TMemo;
     PaintBox1: TPaintBox;
     PaintBox2: TPaintBox;
     PaintBox3: TPaintBox;
@@ -64,11 +63,15 @@ Type
     procedure CImage(Carte : TCarte ; var CRect : TRect);
     procedure remplir_main(main : Tmain ; PaintBox : TPaintBox) ;
     Procedure carteVV(Cartex : Tcarte ; PaintBox : TPaintBox);
+    procedure Tirer7Carte(var main : Tmain);
+
   end;
 
 
 var
   Form3: TForm3;
+  Ordi1, Ordi2, Ordi3, Ordi4, JHumain : Tmain ;     // Les différents mains
+  LeDeck, LeJeter : TDeck ;    //Le deck ou on tire et Le jeter ou on met les cartes déjà jouer.
 
 implementation
 
@@ -93,7 +96,7 @@ end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
-  if pn = 2 then
+    if pn = 2 then
   begin
     Panel2.Show;
   end
@@ -195,6 +198,8 @@ var
   main : Tmain ;
 begin
 
+
+
   CJ.Chiffre := 9;
   CJ.Couleur := re;
   InitialiserMain(main);
@@ -207,9 +212,44 @@ begin
   carteVV(CJ, PaintBox3);
 end;
 
+procedure TForm3.Tirer7Carte(var main : Tmain);    //Piocher 7 cartes de départ.
+var
+  CarteX : TCarte ;
+  i : integer ;
+begin
+  for i := 1 to 7 do
+  begin
+    PiocherCarte(LeDeck,CarteX);
+    AjouterCarteMain(main,CarteX);
+  end;
+end;
+
 procedure TForm3.Button2Click(Sender: TObject);
 begin
+  GenererDeckUno(LeDeck);
 
+  MelangerDeck(LeDeck);
+
+  // tirer les cepts carte de joueurs. Puis afficher les cartes.
+  Tirer7Carte(JHumain);
+
+  // vérifier si l'ordinateur est activf, si oui, piochre aussi.
+  if panel1.Visible then
+  begin
+    Tirer7Carte(Ordi1);   //Puis afficher les cartes.
+  end;
+  if panel2.Visible then
+  begin
+    Tirer7Carte(Ordi2);
+  end;
+  if panel3.Visible then
+  begin
+    Tirer7Carte(Ordi3);
+  end;
+    if panel4.Visible then
+  begin
+    Tirer7Carte(Ordi4);
+  end;
 end;
 
 procedure TForm3.Button4Click(Sender: TObject);
