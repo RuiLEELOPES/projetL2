@@ -9,6 +9,11 @@ uses
   Grids, Buttons;
 
 type
+  TCouleur = (vf, re, bl, j, jk);
+  TCarte = record
+    Couleur: TCouleur;
+    Chiffre: Integer;
+  end;
 
   { TForm3 }
 
@@ -34,12 +39,13 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
-    procedure Button1Click(Sender: TObject);
+
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure placerUneCarte ;
+
 
 
 
@@ -66,7 +72,8 @@ uses Unit2, Unit1 ;
 var
   UNO : TBitmap ;
   nCarte, DeckN1, DeckN2, DeckN3, DeckN4, DeckP : integer ;
-  CarteW, CarteH : integer ;
+  CarteW, CarteH, scale : integer ;
+  CRect, VRect : TRect ;
 
 
 procedure TForm3.FormCreate(Sender: TObject);
@@ -107,117 +114,6 @@ begin
   end;
 end;
 
-function CarteImage();
-var
-   CRect, VRect : TRect ;
-begin
-
-end;
-
-
-procedure TForm3.Button1Click(Sender: TObject);
-var
-  CRect, VRect : TRect ;
-  scale : LongInt;
-  CarteInfoC : integer ;
-  CarteInfoN : integer ;
-  c, n, i : integer ;
-begin
-
-  UNO := TBitmap.Create ;
-  UNO.LoadFromFile('Uno_cards_v3.bmp');
-  CarteW := UNO.Width div 13 ;
-  CarteH := UNO.Height div 5 ;
-
-  for i := 0 to 6 do
-  begin
-    scale := 50;
-  CarteInfoC := random(4) ;
-  CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
-  begin
-    CarteInfoC := random(4) ;
-    CarteInfoN := random(12) ;
-  end;
-  c := CarteInfoC ;
-  n := CarteInfoN ;
-
-  CRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  VRect := Rect(DeckN1 * 55, 1, DeckN1 * 55 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox3.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  DeckN1 := DeckN1 + 1;
-
-  CarteInfoC := random(4) ;
-  CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
-  begin
-    CarteInfoC := random(4) ;
-    CarteInfoN := random(12) ;
-  end;
-  c := CarteInfoC ;
-  n := CarteInfoN ;
-  scale := 100 ;
-  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  DestRect := Rect(DeckP * 110, 1, DeckP * 110 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox1.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  DeckP := DeckP + 1;
-
-
-  if pn >= 1 then
-  begin
-  scale := 50;
-  CarteInfoC := random(4) ;
-  CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
-  begin
-    CarteInfoC := random(4) ;
-    CarteInfoN := random(12) ;
-  end;
-  c := CarteInfoC ;
-  n := CarteInfoN ;
-  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  DestRect := Rect(DeckN2 * 55, 1, DeckN2 * 55 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox5.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  DeckN2 := DeckN2 + 1;
-  end;
-  if pn >= 2 then
-  begin
-  scale := 50;
-  CarteInfoC := random(4) ;
-  CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
-  begin
-    CarteInfoC := random(4) ;
-    CarteInfoN := random(12) ;
-  end;
-  c := CarteInfoC ;
-  n := CarteInfoN ;
-  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  DestRect := Rect(DeckN3 * 55, 1, DeckN3 * 55 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox7.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  DeckN3 := DeckN3 + 1;
-  end;
-  if pn >= 3 then
-  begin
-  scale := 50;
-  CarteInfoC := random(4) ;
-  CarteInfoN := random(12) ;
-  if (CarteInfoC = 12) and (CarteInfoN = 0) or (CarteInfoC = 0) and (CarteInfoN = 0) then
-  begin
-    CarteInfoC := random(4) ;
-    CarteInfoN := random(12) ;
-  end;
-  c := CarteInfoC ;
-  n := CarteInfoN ;
-  SrcRect := Rect(n * CarteW, c * CarteH, (n + 1) * CarteW, (c + 1) * CarteH);
-  DestRect := Rect(DeckN4 * 55, 1, DeckN4 * 55 + round(scale*1), 1 + round(scale*1.55));
-  PaintBox9.Canvas.CopyRect(DestRect, UNO.Canvas, SrcRect);
-  DeckN4 := DeckN4 + 1;
-  end;
-
-
-end;
-end;
 
 procedure TForm3.Button2Click(Sender: TObject);
 begin

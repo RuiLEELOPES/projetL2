@@ -15,7 +15,12 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -28,7 +33,7 @@ var
 
 implementation
 
-uses Unit2 ;
+uses Unit2,  Methode_UNO ;
 
 {$R *.lfm}
 
@@ -43,6 +48,34 @@ procedure TForm1.Button1Click(Sender: TObject);
 begin
   form2.show;
 
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+  Application.Terminate ;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+var
+  Deck : TDeck ;
+  temps : PElementCarte ;
+  i : integer ;
+begin
+  i := 0;
+  InitialiserDeck(Deck);
+  GenererDeckUno(Deck);
+  temps := Deck.Sommet ;
+  while temps <> nil do
+  begin
+    memo1.lines.Append(IntToStr(i) + ' - ');
+
+    memo1.lines.append('Couleur = ' + IntToStr(Ord(Temp^.Carte.Couleur)) + ' | Chiffre = ' + IntToStr(Temp^.Carte.Chiffre));
+
+    temps := temps^.Suivant;
+    i := i + 1;
+  end;
+
+  memo1.lines.append('Taille deck = ' + IntToStr(Deck.Taille));
 end;
 
 end.

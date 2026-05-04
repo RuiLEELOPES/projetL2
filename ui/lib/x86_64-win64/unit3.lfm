@@ -7,9 +7,9 @@ object Form3: TForm3
   ClientHeight = 883
   ClientWidth = 1749
   DesignTimePPI = 120
-  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnShow = FormShow
+  LCLVersion = '3.6.0.0'
   object Button1: TButton
     Left = 8
     Height = 31
@@ -17,7 +17,6 @@ object Form3: TForm3
     Width = 94
     Caption = 'Carte'
     TabOrder = 0
-    OnClick = Button1Click
   end
   object PaintBox1: TPaintBox
     Left = 568

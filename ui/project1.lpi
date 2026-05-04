@@ -63,6 +63,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Unit4"/>
       </Unit>
+      <Unit>
+        <Filename Value="methode_uno.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Methode_UNO"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

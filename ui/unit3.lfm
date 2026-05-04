@@ -17,7 +17,6 @@ object Form3: TForm3
     Width = 94
     Caption = 'Carte'
     TabOrder = 0
-    OnClick = Button1Click
   end
   object PaintBox1: TPaintBox
     Left = 568
