@@ -1,3 +1,10 @@
+{
+ Auteur      : LEE LOPES Rui
+ CompteGit : RuiLEELOPES
+ Date        : 04/05/2026
+ Description :
+}
+
 unit Unit2;
 
 {$mode ObjFPC}{$H+}

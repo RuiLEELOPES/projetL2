@@ -15,7 +15,7 @@ uses
   Classes, SysUtils;
 
 type
-  TCouleur = (vr, re, bl, j, no);
+  TCouleur = (no,j,re,bl,vr);
 
   TCarte = record
     Couleur: TCouleur;
@@ -159,21 +159,45 @@ function GenererDeckUno(var Deck: TDeck): Boolean;
 var
   Couleur: TCouleur;
   Chiffre: Integer;
+  joker,sjoker : Tcarte;
 begin
   InitialiserDeck(Deck);
 
-  for Couleur := vr to j do
+  // Cartes de couleur : vr, re, bl, j
+  for Couleur := j to vr do
   begin
+    // Cartes 1 à 9
     for Chiffre := 1 to 9 do
+    begin
       AjouterPlusieursCartesDeck(Deck, Couleur, Chiffre, 2);
+    end;
 
-    AjouterPlusieursCartesDeck(Deck, Couleur, -1, 2);
-    AjouterPlusieursCartesDeck(Deck, Couleur, -2, 2);
-    AjouterPlusieursCartesDeck(Deck, Couleur, -5, 2);
+    // Cartes spéciales de couleur
+    AjouterPlusieursCartesDeck(Deck, Couleur, -1, 2); // changement de sens
+    AjouterPlusieursCartesDeck(Deck, Couleur, -2, 2); // +2
+    AjouterPlusieursCartesDeck(Deck, Couleur, -5, 2); // passer le tour
   end;
 
-  AjouterPlusieursCartesDeck(Deck, no, -3, 4);
-  AjouterPlusieursCartesDeck(Deck, no, -4, 4);
+  // Cartes noires selon ta nouvelle version
+  //AjouterPlusieursCartesDeck(Deck, no, 1, 4);  {fonctionne pas}
+  //AjouterPlusieursCartesDeck(Deck, no, 6, 4);  {fonctionne pas}
+
+  joker.Couleur:= no;
+   joker.chiffre := 1;
+
+   sjoker.Couleur := no;
+   sjoker.Chiffre := 6 ;
+
+  AjouterCarteDeck(Deck, joker);
+  AjouterCarteDeck(Deck, joker);
+  AjouterCarteDeck(Deck, joker);
+  AjouterCarteDeck(Deck, joker);
+
+ AjouterCarteDeck(Deck, sjoker);
+ AjouterCarteDeck(Deck, sjoker);
+ AjouterCarteDeck(Deck, sjoker);
+ AjouterCarteDeck(Deck, sjoker);
+
 
   GenererDeckUno := Deck.Taille = 104;
 end;
@@ -182,7 +206,7 @@ function MelangerDeck(var Deck: TDeck): Boolean;
 var
   Cartes: array of TCarte;
   Temp: PElementCarte;
-  i, j: Integer;
+  i, j : Integer;
   CarteTemp: TCarte;
 begin
   if Deck.Taille <= 1 then
@@ -315,10 +339,11 @@ begin
 
   Temp := Deck.Sommet;
   CarteSortie := Temp^.Carte;
-  Deck.Sommet := Temp^.Suivant;
-  Dispose(Temp);
 
+  Deck.Sommet := Temp^.Suivant;
   Deck.Taille := Deck.Taille - 1;
+
+  Dispose(Temp);
 
   PiocherCarte := True;
 end;
