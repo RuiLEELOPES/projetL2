@@ -4,11 +4,11 @@ object Form2: TForm2
   Top = 109
   Width = 592
   Caption = 'Form2'
-  ClientHeight = 880
-  ClientWidth = 592
+  ClientHeight = 0
+  ClientWidth = 0
   DesignTimePPI = 120
-  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
   object ScrollBox1: TScrollBox
     Left = 88
     Height = 264
@@ -166,7 +166,7 @@ object Form2: TForm2
       end
       object CheckBox2: TCheckBox
         Left = 6
-        Height = 24
+        Height = 25
         Top = 31
         Width = 215
         Caption = 'Carte Spécialisé'
@@ -175,15 +175,15 @@ object Form2: TForm2
       object CheckBox3: TCheckBox
         Left = 6
         Height = 25
-        Top = 55
+        Top = 56
         Width = 215
         Caption = 'Obligation de Poser'
         TabOrder = 2
       end
       object CheckBox4: TCheckBox
         Left = 6
-        Height = 25
-        Top = 80
+        Height = 24
+        Top = 81
         Width = 215
         Caption = 'Victoire 1e 2e 3e'
         TabOrder = 3

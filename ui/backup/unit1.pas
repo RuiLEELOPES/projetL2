@@ -69,7 +69,7 @@ begin
   begin
     memo1.lines.Append(IntToStr(i) + ' - ');
 
-    memo1.lines.append('Couleur = ' + IntToStr(Ord(Temp^.Carte.Couleur)) + ' | Chiffre = ' + IntToStr(Temp^.Carte.Chiffre));
+    memo1.lines.append('Couleur = ' + IntToStr(Ord(temps^.Carte.Couleur)) + ' | Chiffre = ' + IntToStr(temps^.Carte.Chiffre));
 
     temps := temps^.Suivant;
     i := i + 1;

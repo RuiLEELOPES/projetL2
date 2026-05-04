@@ -1,3 +1,10 @@
+{
+ Auteur      : LEE LOPES Rui
+ CompteGit : RuiLEELOPES
+ Date        : 04/05/2026
+ Description :
+}
+
 unit Unit2;
 
 {$mode ObjFPC}{$H+}
@@ -213,23 +220,23 @@ begin
 
     if CheckBox1.Checked = True then
     begin
-      Form3.DoubleP := True ;
+      //Form3.DoubleP := True ;
     end;
     if CheckBox2.Checked = True then
     begin
-      Form3.CarteS := True ;
+      //Form3.CarteS := True ;
     end;
     if CheckBox3.Checked = True then
     begin
-      Form3.ObligationP := True ;
+      //Form3.ObligationP := True ;
     end;
 
     Form2.hide ;
     Form1.hide ;
     Form3.pn := n ;
-    Form3.difficulter := dif ;
-    Form3.temps := t ;
-    Form3.tempsUno := tu ;
+    //Form3.difficulter := dif ;
+    //Form3.temps := t ;
+    //Form3.tempsUno := tu ;
   end;
 
 
