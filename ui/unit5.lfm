@@ -1,0 +1,61 @@
+object Form4: TForm4
+  Left = 431
+  Height = 495
+  Top = 170
+  Width = 418
+  Caption = 'Form4'
+  ClientHeight = 495
+  ClientWidth = 418
+  DesignTimePPI = 120
+  LCLVersion = '3.6.0.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 496
+    Top = 0
+    Width = 420
+    Lines.Strings = (
+      'MENU PRINCIPAL : '
+      ''
+      'Jouer : Lancer une nouvelle partie de jeu. Elle affiche un pop-up pour faire des paramètre avant de commencer la partie.'
+      ''
+      'Aide : Elle met un écran où les fonctions de jeu est expliquer.'
+      ''
+      'Paramètres (WIP) : Permet de modifier les paramètres, en développement.'
+      ''
+      'Quitter : Quitte le jeu.'
+      ''
+      ''
+      'Les paramètre d''une partie :'
+      ''
+      'Vous pouvez ajouter de 1 à 4 joueurs ordinateur. Ces joueurs disposent de 3 modes de jeu.'
+      ''
+      'Vous pouvez paramétrer la fréquence des erreurs de ces joueurs en ajustant la difficulté.'
+      ''
+      'Vous pouvez définir la durée de jeu de chaque joueur et la durée des événements UNO.'
+      ''
+      'Des règles détaillées peuvent être ajoutées :'
+      ''
+      'Double Jeu - Ajoute un tour supplémentaire au joueur qui joue la même carte.'
+      'Carte Spéciale - Ajoute des cartes spéciales.'
+      'Obligation de Poser - Empêche de passer son tour sans rien faire.'
+      'Changement de Main - Inverse le paquet de cartes.'
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+    )
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 16
+    Height = 31
+    Top = 448
+    Width = 94
+    Caption = 'Quitter'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+end

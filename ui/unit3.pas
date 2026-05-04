@@ -31,6 +31,7 @@ Type
     Memo2: TMemo;
     Memo3: TMemo;
     PaintBox1: TPaintBox;
+    PaintBox10: TPaintBox;
     PaintBox2: TPaintBox;
     PaintBox3: TPaintBox;
     PaintBox4: TPaintBox;

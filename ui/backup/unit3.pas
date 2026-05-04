@@ -31,6 +31,7 @@ Type
     Memo2: TMemo;
     Memo3: TMemo;
     PaintBox1: TPaintBox;
+    PaintBox10: TPaintBox;
     PaintBox2: TPaintBox;
     PaintBox3: TPaintBox;
     PaintBox4: TPaintBox;
@@ -302,6 +303,7 @@ begin
     Tirer7Carte(Ordi4,LeDeck);
     remplir_main(Ordi4,PaintBox9);
   end;
+    Button2.Enabled:= False;
 end;
 
 procedure TForm3.Button4Click(Sender: TObject);

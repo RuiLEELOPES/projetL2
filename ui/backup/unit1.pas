@@ -27,6 +27,7 @@ type
     Button5: TButton;
     Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -56,6 +57,11 @@ procedure TForm1.Button1Click(Sender: TObject);
 begin
   form2.show;
 
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Form4.Show;
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
